@@ -22,3 +22,105 @@ java.lang.NumberFormatException: For input string: "abc"
 	at java.lang.Integer.parseInt(Integer.java:580)
 	at java.lang.Integer.parseInt(Integer.java:615)
 	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:55:52.862 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:56:02.868 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:56:12.871 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:56:22.875 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:56:32.877 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:56:42.880 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:56:52.883 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:57:02.889 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:57:12.896 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:57:22.901 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:57:32.902 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:57:42.903 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:57:52.904 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:58:02.909 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:58:12.910 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:58:22.913 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:58:32.915 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
