@@ -92,4 +92,293 @@ TD.Exception { background: #A2AEE8; font-family: courier, monospace;}
 <br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
 <br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
 <br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Logback Log Messages</title>
+<style  type="text/css">
+table { margin-left: 2em; margin-right: 2em; border-left: 2px solid #AAA; }
+TR.even { background: #FFFFFF; }
+TR.odd { background: #EAEAEA; }
+TR.warn TD.Level, TR.error TD.Level, TR.fatal TD.Level {font-weight: bold; color: #FF4040 }
+TD { padding-right: 1ex; padding-left: 1ex; border-right: 2px solid #AAA; }
+TD.Time, TD.Date { text-align: right; font-family: courier, monospace; font-size: smaller; }
+TD.Thread { text-align: left; }
+TD.Level { text-align: right; }
+TD.Logger { text-align: left; }
+TR.header { background: #596ED5; color: #FFF; font-weight: bold; font-size: larger; }
+TD.Exception { background: #A2AEE8; font-family: courier, monospace;}
+</style>
+
+  </head>
+<body>
+<hr/>
+<p>Log session start time Fri Nov 15 15:55:52 CST 2019</p><p></p>
+
+<table cellspacing="0">
+<tr class="header">
+<td class="Date">Date</td>
+<td class="Thread">Thread</td>
+<td class="Level">Level</td>
+<td class="FileOfCaller">FileOfCaller</td>
+<td class="MethodOfCaller">MethodOfCaller</td>
+<td class="LineOfCaller">LineOfCaller</td>
+<td class="Message">Message</td>
+</tr>
+
+
+<tr class="error even">
+<td class="Date">2019-11-15:15:55:52.862</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:56:02.868</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:56:12.871</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:56:22.875</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:56:32.877</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:56:42.880</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:56:52.883</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:57:02.889</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:57:12.896</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:57:22.901</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:57:32.902</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:57:42.903</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:57:52.904</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:58:02.909</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:58:12.910</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error odd">
+<td class="Date">2019-11-15:15:58:22.913</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
+</td></tr>
+<tr class="error even">
+<td class="Date">2019-11-15:15:58:32.915</td>
+<td class="Thread">main</td>
+<td class="Level">ERROR</td>
+<td class="FileOfCaller">LogTest.java</td>
+<td class="MethodOfCaller">main</td>
+<td class="LineOfCaller">37</td>
+<td class="Message">这是一条错误测试：For input string: &quot;abc&quot;</td>
+</tr>
+<tr><td class="Exception" colspan="6">java.lang.NumberFormatException: For input string: &quot;abc&quot;
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:580)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at java.lang.Integer.parseInt(Integer.java:615)
+<br />&nbsp;&nbsp;&nbsp;&nbsp;at com.mintlolly.log.LogTest.main(LogTest.java:35)
 </td></tr>
