@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaCompilerConfiguration">
+    <profile name="Maven 1" modules="LearnJava">
+      <parameters>
+        <parameter value="-nobootcp" />
+      </parameters>
+    </profile>
+    <profile name="Maven 2" modules="learnscala">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="G:\Users\jag\study\learn-scala\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+  </component>
+</project>

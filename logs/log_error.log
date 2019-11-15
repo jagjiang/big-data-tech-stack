@@ -1,0 +1,24 @@
+2019-11-15 15:28:34.749 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:28:44.753 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:28:54.758 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
+2019-11-15 15:29:04.760 [main] ERROR com.mintlolly.log.LogTest - 这是一条错误测试：For input string: "abc"
+java.lang.NumberFormatException: For input string: "abc"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.mintlolly.log.LogTest.main(LogTest.java:35)
