@@ -1,6 +1,5 @@
 package com.mintlolly.log;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,11 +10,10 @@ import java.util.Arrays;
 /**
  * @author jiangbo
  * @description
- * @date 2019/11/15 10:57
+ * @date 2019/11/26 17:57
  */
 public class LogTest {
-    static final Logger logger = LoggerFactory.getLogger(LogTest.class);
-
+    final static Logger logger  = LoggerFactory.getLogger(LogTest.class);
     public static void main(String[] args) throws InterruptedException {
         while(true){
             logger.info("这是一条slf4j的测试");
