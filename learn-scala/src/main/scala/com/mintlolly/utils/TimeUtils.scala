@@ -39,7 +39,7 @@ object TimeUtils {
    */
   def toDate10(time:String):String = {
     val fm = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-    val date = fm.format(new Date(time.toLong))
+    val date = fm.format(new Date(time.toLong*1000))
     date
   }
 
