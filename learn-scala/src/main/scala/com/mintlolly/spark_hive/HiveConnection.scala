@@ -1,8 +1,5 @@
 package com.mintlolly.spark_hive
 
-import java.text.SimpleDateFormat
-import java.util.Date
-
 import com.mintlolly.utils.TimeUtils
 import org.apache.spark.sql.SparkSession
 

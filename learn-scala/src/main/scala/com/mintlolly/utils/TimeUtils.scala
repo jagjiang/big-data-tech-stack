@@ -33,7 +33,7 @@ object TimeUtils {
     date
   }
   /**
-   * 13位时间戳转日期
+   * 10位时间戳转日期
    * @param time
    * @return String yyyy-MM-dd HH:mm:ss
    */
