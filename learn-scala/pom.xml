@@ -37,6 +37,8 @@
       <artifactId>junit</artifactId>
       <version>4.12</version>
     </dependency>
+
+    <!--spark-->
     <dependency>
       <groupId>org.apache.spark</groupId>
       <artifactId>spark-core_2.12</artifactId>
@@ -53,7 +55,20 @@
       <version>${spark.version}</version>
     </dependency>
 
-    <!--spark sql ArrayIndexOutOfBoundsException: 10582-->
+    <!-- 莫名报了这个错误 java.lang.NoClassDefFoundError: scala/xml/MetaData -->
+    <dependency>
+      <groupId>org.scala-lang.modules</groupId>
+      <artifactId>scala-xml_2.12</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+
+    <!--scala json转换-->
+    <dependency>
+      <groupId>org.json4s</groupId>
+      <artifactId>json4s-native_2.12</artifactId>
+      <version>3.6.7</version>
+    </dependency>
+    <!--jdk 1.8引起的 spark sql ArrayIndexOutOfBoundsException: 10582-->
     <dependency>
       <groupId>com.thoughtworks.paranamer</groupId>
       <artifactId>paranamer</artifactId>
