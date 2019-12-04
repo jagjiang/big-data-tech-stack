@@ -2,7 +2,7 @@
 .idea
 /out/
 /logs/
-./*/target/
+./*/target
 ./*/*.iml
 *.log　
 .mvn　　　　
