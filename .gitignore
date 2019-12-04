@@ -1,6 +1,7 @@
 # Project exclude paths
 .idea
-./*/target/
+./learn-java/target
+./learn-scala/target
 /out/
 /logs/
 ./*/*.iml
