@@ -2,15 +2,14 @@
 .idea
 /out/
 /logs/
+./*/target/
+./*/*.iml
 *.log　
 .mvn　　　　
 .iml
 mvnw
 mvnw.cmd
-logs/
-./*/target/
 help.md
-./*/*.iml
 .project
 .settings
 .classpath
