@@ -2,4 +2,16 @@
 /out/
 /logs/
 *.log
+.idea　　　　
+.mvn　　　　
+.iml
+mvnw
+mvnw.cmd
+logs/
+/*/target/
+help.md
+
+.project
+.settings
+.classpath
 test.html
