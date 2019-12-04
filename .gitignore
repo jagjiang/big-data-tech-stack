@@ -1,8 +1,8 @@
 # Project exclude paths
+.idea
 /out/
 /logs/
-*.log
-.idea　　　　
+*.log　
 .mvn　　　　
 .iml
 mvnw
@@ -10,7 +10,7 @@ mvnw.cmd
 logs/
 ./*/target/
 help.md
-
+./*/*.iml
 .project
 .settings
 .classpath
