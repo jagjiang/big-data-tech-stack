@@ -8,7 +8,7 @@
 mvnw
 mvnw.cmd
 logs/
-/*/target/
+./*/target/
 help.md
 
 .project
