@@ -20,6 +20,8 @@
     <encoding>UTF-8</encoding>
     <scala.version>2.12.10</scala.version>
     <spark.version>2.4.0</spark.version>
+    <hbase.version>2.1.0</hbase.version>
+    <hadoop.version>3.1.1</hadoop.version>
     <scala.compat.version>2.12</scala.compat.version>
     <spec2.version>4.2.0</spec2.version>
   </properties>
@@ -36,6 +38,12 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+    </dependency>
+    <!--hadoop-->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.version}</version>
     </dependency>
 
     <!--spark-->
@@ -54,7 +62,23 @@
       <artifactId>spark-hive_2.12</artifactId>
       <version>${spark.version}</version>
     </dependency>
-
+    <!--HBase-->
+    <dependency>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-client</artifactId>
+      <version>${hbase.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-common</artifactId>
+      <version>${hbase.version}</version>
+    </dependency>
+    <!--mysql-->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.16</version>
+    </dependency>
     <!-- 莫名报了这个错误 java.lang.NoClassDefFoundError: scala/xml/MetaData -->
     <dependency>
       <groupId>org.scala-lang.modules</groupId>
