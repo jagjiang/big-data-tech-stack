@@ -45,7 +45,7 @@ object Utils {
         * (gridx2.toDouble - gridx.toDouble))
     }
   }
-  
+
   /**
    * 计算两条记录之间的距离(经纬度)
    * @param lon
