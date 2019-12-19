@@ -1,8 +1,7 @@
 package samples
 
 import com.mintlolly.hbase._
-import org.apache.spark.rdd.RDD
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.sql.SparkSession
 /**
  *
  * @description
@@ -22,22 +21,18 @@ object Test extends HBaseReadSupport {
       println
    }
 
-    case class Config(quorum:String, rootdir:String,clientPort:String)
+    val spark = SparkSession.builder().appName("HbaseTest").master("local[*]").getOrCreate()
+    val sc = spark.sparkContext
+    implicit val config = HBaseConfig(("hbase.zookeeper.quorum","slave1,slave2,slave3")
+      ,("hbase.zookeeper.property.clientPort","2181")
+      ,("zookeeper.znode.parent","/hbase-unsecure"))
+    val hbaseSC = new HbaseSC(sc)
 
+    val admin = Admin()
+    admin.disableTable("test")
+    admin.deleteTable("test")
 
-
-
-
-    val c = Config("slave1,slave2,slave3","/hbase-unsecure","2181")
-
-
-
-    val conf = new SparkConf().setMaster("local[2]").setAppName("Test")
-    lazy val sparkContext = new SparkContext(conf)
-    implicit val config = HBaseConfig(c)
-    val sc = new HbaseSC(sparkContext)
-
-    sparkContext.textFile("")
+    hbaseSC.hbase[String]("zhysd").foreach(println)
   }
 
 

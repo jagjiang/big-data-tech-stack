@@ -8,6 +8,7 @@ import org.apache.hadoop.hbase.TableName
 import org.apache.hadoop.hbase.client.{ColumnFamilyDescriptorBuilder, Connection, ConnectionFactory, TableDescriptorBuilder}
 import org.apache.hadoop.hbase.mapreduce.TableOutputFormat
 import org.apache.hadoop.mapreduce.Job
+import org.apache.spark.internal.Logging
 import org.apache.spark.rdd.RDD
 
 import scala.collection.JavaConverters._
@@ -32,7 +33,7 @@ trait HBaseUtils {
     def apply()(implicit config: HBaseConfig) = new Admin(ConnectionFactory.createConnection(config.get))
   }
 
-  class Admin(connection: Connection) {
+  class Admin(connection: Connection) extends Logging{
     def close(): Unit = connection.close()
 
     /**
@@ -171,8 +172,10 @@ trait HBaseUtils {
     def deleteTable(tableName: String): Admin = {
       val admin = connection.getAdmin
       val table = TableName.valueOf(tableName)
-      if (admin.tableExists(table))
+      if (admin.tableExists(table)) {
+        logInfo("删除数据表:"+table)
         admin.deleteTable(table)
+      }
       this
     }
 

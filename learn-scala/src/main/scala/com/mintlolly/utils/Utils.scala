@@ -52,7 +52,7 @@ object Utils {
    * @param lat
    * @param lon2
    * @param lat2
-   * @return
+   * @return  m 米
    */
   def calcDistanceLonLat(lon:String,lat:String,lon2:String,lat2:String):BigDecimal = {
     if(lat!=0 && lon!=0 && lat2!=0 && lon2!=0){

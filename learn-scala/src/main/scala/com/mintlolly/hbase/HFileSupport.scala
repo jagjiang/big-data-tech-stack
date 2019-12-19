@@ -1,18 +1,3 @@
-/* Copyright 2019 UniCredit S.p.A.
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
-
 package com.mintlolly.hbase
 
 import java.util.UUID
@@ -41,23 +26,29 @@ trait HFileSupport {
   implicit lazy val cellKeyOrdering = new CellKeyOrdering
   implicit lazy val cellKeyTSOrdering = new CellKeyTSOrdering
 
-  implicit def toHFileRDDSimple[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[Q, A])])(implicit writer: Writes[A]): HFileRDDSimple[K, Q, CellKey, A, A] =
+  implicit def toHFileRDDSimple[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[Q, A])])(implicit writer: Writes[A]): HFileRDDSimple[K, Q, CellKey, A, A] = {
     new HFileRDDSimple[K, Q, CellKey, A, A](rdd, gc[A], kvf[A])
+  }
 
-  implicit def toHFileRDDSimpleTS[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[Q, (A, Long)])])(implicit writer: Writes[A]): HFileRDDSimple[K, Q, CellKeyTS, (A, Long), A] =
+  implicit def toHFileRDDSimpleTS[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[Q, (A, Long)])])(implicit writer: Writes[A]): HFileRDDSimple[K, Q, CellKeyTS, (A, Long), A] = {
     new HFileRDDSimple[K, Q, CellKeyTS, (A, Long), A](rdd, gc[A], kvft[A])
+  }
 
-  implicit def toHFileRDDFixed[K: Writes, A: ClassTag](rdd: RDD[(K, Seq[A])])(implicit writer: Writes[A]): HFileRDDFixed[K, CellKey, A, A] =
+  implicit def toHFileRDDFixed[K: Writes, A: ClassTag](rdd: RDD[(K, Seq[A])])(implicit writer: Writes[A]): HFileRDDFixed[K, CellKey, A, A] = {
     new HFileRDDFixed[K, CellKey, A, A](rdd, gc[A], kvf[A])
+  }
 
-  implicit def toHFileRDDFixedTS[K: Writes, A: ClassTag](rdd: RDD[(K, Seq[(A, Long)])])(implicit writer: Writes[A]): HFileRDDFixed[K, CellKeyTS, (A, Long), A] =
+  implicit def toHFileRDDFixedTS[K: Writes, A: ClassTag](rdd: RDD[(K, Seq[(A, Long)])])(implicit writer: Writes[A]): HFileRDDFixed[K, CellKeyTS, (A, Long), A] = {
     new HFileRDDFixed[K, CellKeyTS, (A, Long), A](rdd, gc[A], kvft[A])
+  }
 
-  implicit def toHFileRDD[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[String, Map[Q, A]])])(implicit writer: Writes[A]): HFileRDD[K, Q, CellKey, A, A] =
+  implicit def toHFileRDD[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[String, Map[Q, A]])])(implicit writer: Writes[A]): HFileRDD[K, Q, CellKey, A, A] = {
     new HFileRDD[K, Q, CellKey, A, A](rdd, gc[A], kvf[A])
+  }
 
-  implicit def toHFileRDDTS[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[String, Map[Q, (A, Long)]])])(implicit writer: Writes[A]): HFileRDD[K, Q, CellKeyTS, (A, Long), A] =
+  implicit def toHFileRDDTS[K: Writes, Q: Writes, A: ClassTag](rdd: RDD[(K, Map[String, Map[Q, (A, Long)]])])(implicit writer: Writes[A]): HFileRDD[K, Q, CellKeyTS, (A, Long), A] = {
     new HFileRDD[K, Q, CellKeyTS, (A, Long), A](rdd, gc[A], kvft[A])
+  }
 
 }
 
@@ -68,26 +59,28 @@ private[hbase] object HFileMethods {
 
   type GetCellKey[C, A, V] = (CellKey, A) => (C, V)
   type KeyValueWrapper[C, V] = (C, V) => (ImmutableBytesWritable, KeyValue)
-  type KeyValueWrapperF[C, V] = (Array[Byte]) => KeyValueWrapper[C, V]
+  type KeyValueWrapperF[C, V] = Array[Byte] => KeyValueWrapper[C, V]
 
   // GetCellKey
   def gc[A](c: CellKey, v: A): (CellKey, A) = (c, v)
   def gc[A](c: CellKey, v: (A, Long)): (CellKeyTS, A) = ((c, v._2), v._1)
 
   // KeyValueWrapperF
-  def kvf[A](f: Array[Byte])(c: CellKey, v: A)(implicit writer: Writes[A]): (ImmutableBytesWritable, KeyValue) =
+  def kvf[A](f: Array[Byte])(c: CellKey, v: A)(implicit writer: Writes[A]): (ImmutableBytesWritable, KeyValue) = {
     (new ImmutableBytesWritable(c._1), new KeyValue(c._1, f, c._2, writer.write(v)))
-  def kvft[A](f: Array[Byte])(c: CellKeyTS, v: A)(implicit writer: Writes[A]): (ImmutableBytesWritable, KeyValue) =
+  }
+
+  def kvft[A](f: Array[Byte])(c: CellKeyTS, v: A)(implicit writer: Writes[A]): (ImmutableBytesWritable, KeyValue) = {
     (new ImmutableBytesWritable(c._1._1), new KeyValue(c._1._1, f, c._1._2, c._2, writer.write(v)))
+  }
 
   class CellKeyOrdering extends Ordering[CellKey] {
     override def compare(a: CellKey, b: CellKey): Int = {
       val (ak, aq) = a
       val (bk, bq) = b
-      // compare keys
       val ord = Bytes.compareTo(ak, bk)
       if (ord != 0) ord
-      else Bytes.compareTo(aq, bq) // compare qualifiers
+      else Bytes.compareTo(aq, bq)
     }
   }
 
@@ -99,7 +92,6 @@ private[hbase] object HFileMethods {
       val ord = cellKeyOrdering.compare(ac, bc)
       if (ord != 0) ord
       else {
-        // see org.apache.hadoop.hbase.KeyValue.KVComparator.compareTimestamps(long, long)
         if (at < bt) 1
         else if (at > bt) -1
         else 0
@@ -178,9 +170,6 @@ sealed abstract class HFileRDDHelper extends Serializable {
     try {
       rdd
         .saveAsNewAPIHadoopFile(hFilePath.toString, classOf[ImmutableBytesWritable], classOf[KeyValue], classOf[HFileOutputFormat2], job.getConfiguration)
-
-      // prepare HFiles for incremental load
-      // set folders permissions read/write/exec for all
       val rwx = new FsPermission("777")
       def setRecursivePermission(path: Path): Unit = {
         val listFiles = fs.listStatus(path)
@@ -188,10 +177,6 @@ sealed abstract class HFileRDDHelper extends Serializable {
           val p = f.getPath
           fs.setPermission(p, rwx)
           if (f.isDirectory && p.getName != "_tmp") {
-            // create a "_tmp" folder that can be used for HFile splitting, so that we can
-            // set permissions correctly. This is a workaround for unsecured HBase. It should not
-            // be necessary for SecureBulkLoadEndpoint (see https://issues.apache.org/jira/browse/HBASE-8495
-            // and http://comments.gmane.org/gmane.comp.java.hadoop.hbase.user/44273)
             FileSystem.mkdirs(fs, new Path(p, "_tmp"), rwx)
             setRecursivePermission(p)
           }
@@ -206,7 +191,6 @@ sealed abstract class HFileRDDHelper extends Serializable {
 
       fs.deleteOnExit(hFilePath)
 
-      // clean HFileOutputFormat2 stuff
       fs.deleteOnExit(new Path(TotalOrderPartitioner.getPartitionFile(job.getConfiguration)))
     }
   }
