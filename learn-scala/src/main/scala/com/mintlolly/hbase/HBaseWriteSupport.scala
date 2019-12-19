@@ -55,7 +55,7 @@ private[hbase] object HBaseWriteMethods{
 }
 
 abstract class HBaseWriteHelpers {
-  protected def convert[K,Q,V](id: K, values: Map[String,Map[Q, V]],put:PutAdder[V](implicit wk: Writes[K], wq: Writes[Q], ws:Writes[String]):Option[(ImmutableBytesWritable,Put)] = {
+  protected def convert[K,Q,V](id: K, values: Map[String,Map[Q, V]],put:PutAdder[V])(implicit wk: Writes[K], wq: Writes[Q], ws:Writes[String]):Option[(ImmutableBytesWritable,Put)] = {
     val p = new Put(wk.write(id))
     var empty = true
     for {
