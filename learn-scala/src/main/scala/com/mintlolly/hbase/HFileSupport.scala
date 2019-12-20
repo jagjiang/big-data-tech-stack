@@ -126,10 +126,8 @@ sealed abstract class HFileRDDHelper extends Serializable {
       val h = (k.hashCode() & Int.MaxValue) % fraction
       for (i <- 1 until splits.length)
         if (Bytes.compareTo(k, splits(i)) < 0) return (i - 1) * fraction + h
-
       (splits.length - 1) * fraction + h
     }
-
     override def numPartitions: Int = splits.length * fraction
   }
 
@@ -141,7 +139,6 @@ sealed abstract class HFileRDDHelper extends Serializable {
 
       splits.length - 1
     }
-
     override def numPartitions: Int = splits.length
   }
 
