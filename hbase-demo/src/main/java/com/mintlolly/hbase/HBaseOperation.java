@@ -64,8 +64,12 @@ public class HBaseOperation {
                 }
                 //获得表描述器
                 TableDescriptor td = tdb.build();
+                //对创建的表进行分区  Bytes.toBytes本身返回就是一个数组
+                byte[][] splitKeys = new byte[][]{ Bytes.toBytes("10000"),
+                        Bytes.toBytes("20000"), Bytes.toBytes("30000"),
+                        Bytes.toBytes("40000") };
                 //创建表
-                admin.createTable(td);
+                admin.createTable(td,splitKeys);
             }else {
                 System.out.println("表已存在！");
             }
