@@ -12,6 +12,7 @@
     <module>learn-java</module>
     <module>learn-scala</module>
       <module>hbase-demo</module>
+    <module>kafka-demo</module>
   </modules>
 
   <name>study</name>
