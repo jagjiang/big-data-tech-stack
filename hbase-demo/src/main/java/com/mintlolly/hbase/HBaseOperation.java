@@ -2,16 +2,20 @@ package com.mintlolly.hbase;
 
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.TableExistsException;
-import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.TableNotFoundException;
+import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.filter.BinaryComparator;
+import org.apache.hadoop.hbase.filter.CompareFilter;
+import org.apache.hadoop.hbase.filter.Filter;
+import org.apache.hadoop.hbase.filter.RowFilter;
 import org.apache.hadoop.hbase.util.Bytes;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class HBaseOperation {
 
@@ -58,11 +62,13 @@ public class HBaseOperation {
                 ColumnFamilyDescriptor  cfd;
                 for (String columnFamily:cfs) {
                     cdb =  ColumnFamilyDescriptorBuilder.newBuilder(Bytes.toBytes(columnFamily));
+                    cdb.setMaxVersions(3);
                     cfd = cdb.build();
                     //添加列族
                     tdb.setColumnFamily(cfd);
                 }
                 //获得表描述器
+
                 TableDescriptor td = tdb.build();
                 //对创建的表进行分区  Bytes.toBytes本身返回就是一个数组
                 byte[][] splitKeys = new byte[][]{ Bytes.toBytes("10000"),
@@ -121,17 +127,40 @@ public class HBaseOperation {
             e.printStackTrace();
         }
     }
+    //构造过滤器
+    public static Filter contructFilter(){
+        return new RowFilter(CompareOperator.GREATER,new BinaryComparator(Bytes.toBytes("1001")));
+    }
+
+    //扫描hbase中的数据
+    public static void scanData(String tableName,Filter filter) throws IOException{
+            Table table = conn.getTable(TableName.valueOf(tableName));
+            Scan scan = new Scan();
+            scan.setFilter(filter);
+            ResultScanner scanner = table.getScanner(scan);
+            Iterator<Result>  iterator= scanner.iterator();
+            LinkedList<String> rowkeys = new LinkedList<>();
+            while (iterator.hasNext()){
+                Result result = iterator.next();
+                String rowkey = Bytes.toString(result.getRow());
+                rowkeys.add(rowkey);
+            }
+            System.out.println(rowkeys);
+            scanner.close();
+            table.close();
+    }
     //关闭资源
     public static void close() throws IOException {
         conn.close();
     }
 
     public static void main(String[] args) throws IOException {
-        dropTable("test20200508");
-        createTable("test20200508", "info", "info2");
+//        dropTable("test20200508");
+//        createTable("test20200508", "info", "info2");
 //        insertData("test20200508","1001","info","name","liang");
 //        isTableExist("test20200508");
 //        getResult("test20200508","1001");
-        close();
+
+        scanData("test20200508",contructFilter());
     }
 }
