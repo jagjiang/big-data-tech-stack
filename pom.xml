@@ -13,6 +13,7 @@
     <module>learn-scala</module>
       <module>hbase-demo</module>
     <module>kafka-demo</module>
+      <module>spark-demo</module>
   </modules>
 
   <name>study</name>

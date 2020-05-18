@@ -6,7 +6,7 @@
 /*/*.iml
 *.log
 .mvn
-.iml
+*.iml
 mvnw
 mvnw.cmd
 help.md
