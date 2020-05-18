@@ -1,6 +1,9 @@
 # Project exclude paths
 .idea
-/*/target
+/learn-java/target
+/learn-scala/target
+/kafka-demo/target
+/hbase-demo/target
 /out/
 /logs/
 /*/*.iml
