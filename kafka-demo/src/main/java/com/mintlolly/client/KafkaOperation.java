@@ -1,4 +1,4 @@
-package com.mintlolly;
+package com.mintlolly.client;
 
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.admin.*;
