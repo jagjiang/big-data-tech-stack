@@ -3,6 +3,7 @@
 /*/target
 /out/
 /logs/
+/zlogs/
 /*/*.iml
 *.log
 .mvn
