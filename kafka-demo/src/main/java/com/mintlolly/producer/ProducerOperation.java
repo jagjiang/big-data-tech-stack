@@ -1,11 +1,15 @@
 package com.mintlolly.producer;
 
 import org.apache.kafka.clients.producer.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.util.Properties;
-import java.util.concurrent.Future;
 
 public class ProducerOperation {
+    final static Logger LOG = LoggerFactory.getLogger(ProducerOperation.class);
+
 
     /**
      * 构建Producer实例
@@ -20,50 +24,53 @@ public class ProducerOperation {
         //指定消息value的序列化器
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         // 指定自定义的Partition负载均衡器 指定自己的分区器，比如直接返回3，那么所有的数据都会存在partition3
-        properties.setProperty(ProducerConfig.PARTITIONER_CLASS_CONFIG, "com.mintlolly.partitioner.MyPartitioner");
-        return new KafkaProducer<String, String>(properties);
+//        properties.setProperty(ProducerConfig.PARTITIONER_CLASS_CONFIG, "com.mintlolly.partitioner.MyPartitioner");
+        return new KafkaProducer<>(properties);
     }
 
     /**
      * 异步发送数据
+     * 发送了100条数据，对消息是否抵达完全没管，等于纯异步的方式
      */
     public static void producerAsyncSend(){
         String topicName = "input-topic";
-        String key = "event";
-        String value = "send a message!";
+
 
         Producer<String, String> producer = createProducer();
         //构建消息对象
-        ProducerRecord<String,String> record = new ProducerRecord<>(topicName,key,value);
-        Future<RecordMetadata> send = producer.send(record);
-        //如果不flush的话会失败
-        producer.flush();
-        System.out.println(send.isDone());
+//        ProducerRecord<String,String> record = new ProducerRecord<>(topicName,key,value);
+//        Future<RecordMetadata> send = producer.send(record);
+        for (int i = 0; i < 100; i++) {
+            LOG.info("已经发送了[{}]条数据",i);
+            producer.send(new ProducerRecord<>(topicName,String.valueOf(i),"send  "+ i+ "  message"));
+        }
         producer.close();
     }
 
     /**
-     * 异步回调发送
+     * 异步回调发送，获取发送结果
+     * Callback两个参数
+     * 一个RecordMetadata 消息发送成功后的元数据
+     * Exception消息发送过程中的异常信息
      */
     public static void producerAsyncCallbackSend(){
         String topicName = "input-topic";
-        String key = "event";
-        String value = "send some message!";
 
         Producer<String, String> producer = createProducer();
-        ProducerRecord<String,String> record = new ProducerRecord<>(topicName,key,value);
-        producer.send(record,((recordMetadata, e) -> {
-            if(e != null){
-                e.printStackTrace();
-            }
-            System.out.println(String.format(
-                    "hasTimestamp: %s, timestamp: %s, hasOffset: %s, offset: %s, partition: %s, topic: %s",
-                    recordMetadata.hasTimestamp(), recordMetadata.timestamp(),
-                    recordMetadata.hasOffset(), recordMetadata.offset(),
-                    recordMetadata.partition(), recordMetadata.topic()
-            ));
-        }));
-        producer.flush();
+        for (int i = 0; i < 100; i++) {
+
+            producer.send(new ProducerRecord<>(topicName, String.valueOf(i), "send  " + i + "  message"), ((recordMetadata, e) -> {
+                if (e != null) {
+                    LOG.error(e.getMessage(),e);
+                }
+                LOG.info(String.format(
+                        "hasTimestamp: %s, timestamp: %s, hasOffset: %s, offset: %s, partition: %s, topic: %s",
+                        recordMetadata.hasTimestamp(), recordMetadata.timestamp(),
+                        recordMetadata.hasOffset(), recordMetadata.offset(),
+                        recordMetadata.partition(), recordMetadata.topic()
+                ));
+            }));
+        }
         producer.close();
     }
 
