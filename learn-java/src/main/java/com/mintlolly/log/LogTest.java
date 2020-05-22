@@ -20,13 +20,16 @@ public class LogTest {
 
             SecureRandom sr = null;
             try {
-                sr = SecureRandom.getInstanceStrong(); // 获取高强度安全随机数生成器
+                // 获取高强度安全随机数生成器
+                sr = SecureRandom.getInstanceStrong();
             } catch (NoSuchAlgorithmException e) {
                 logger.error("获取高强度安全随机数失败，开始获取普通安全随机数");
-                sr = new SecureRandom(); // 获取普通的安全随机数生成器
+                // 获取普通的安全随机数生成器
+                sr = new SecureRandom();
             }
             byte[] buffer = new byte[16];
-            sr.nextBytes(buffer); // 用安全随机数填充buffer
+            // 用安全随机数填充buffer
+            sr.nextBytes(buffer);
             logger.info("获取的随机数为：{}", Arrays.toString(buffer));
 
             try {
