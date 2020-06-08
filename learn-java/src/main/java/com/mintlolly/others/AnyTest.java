@@ -8,5 +8,8 @@ package com.mintlolly.others;
 public class AnyTest {
     public static void main(String[] args) {
         System.out.println((char)('a'+4));
+        System.out.println(Math.sqrt(6));
+        int a = -2147483648;
+        System.out.println(a);
     }
 }
