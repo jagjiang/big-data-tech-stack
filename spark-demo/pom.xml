@@ -44,6 +44,14 @@
             <artifactId>spark-hive_2.12</artifactId>
             <version>${spark.version}</version>
         </dependency>
+
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.20</version>
+        </dependency>
+
         <!--jdk 1.8引起的 spark sql ArrayIndexOutOfBoundsException: 10582-->
         <dependency>
             <groupId>com.thoughtworks.paranamer</groupId>
