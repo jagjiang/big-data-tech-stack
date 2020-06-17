@@ -1,4 +1,4 @@
-package com.mintlolly.springbootdemo;
+package com.mintlolly;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
