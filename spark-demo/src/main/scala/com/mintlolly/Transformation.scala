@@ -1,9 +1,14 @@
 package com.mintlolly
 
-import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 
-object Transformation {
+/**
+ * Create by on jiangbo 2020/7/16 13:13
+ *
+ * Description:
+ *
+ */
+object  Transformation {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().appName("Transformation").master("local[4]").getOrCreate()
     val sc = spark.sparkContext
