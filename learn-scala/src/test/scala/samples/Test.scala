@@ -1,6 +1,7 @@
 package samples
 
 import com.mintlolly.hbase._
+import com.mintlolly.utils.Utils
 import org.apache.spark.sql.SparkSession
 
 /**
@@ -60,6 +61,8 @@ object Test extends HBaseReadSupport {
     //    admin.deleteTable("test")
     //
     //    hbaseSC.hbase[String]("zhysd").foreach(println)
+
+    println(Utils.calcDistanceLonLat("114.34165600558333","30.655179548283332","114.33599663346668","30.64624418133334"))
   }
 
 }
