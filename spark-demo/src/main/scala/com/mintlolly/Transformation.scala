@@ -17,6 +17,9 @@ object Transformation {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().appName("Transformation").master("local[4]").getOrCreate()
     val sc = spark.sparkContext
+
+    sc.setLogLevel("WARN")
+
     val pairRdd = sc.parallelize(List(("cat", 2), ("cat", 5), ("mouse", 4),
       ("cat", 12), ("dog", 12), ("mouse", 2)), 2)
 
@@ -51,10 +54,10 @@ object Transformation {
         result = item.next() :: result
       }
       result =("|",index) :: result
-      index += 1
+      index = index+ 1
       result.iterator
     }).foreach(println)
-
+    println("===================mapPartitions Test===================")
     //aggregateBykey 按照key进行聚合
     pairRdd.aggregateByKey(0)(math.max(_, _), _ + _).foreach(println)
 
