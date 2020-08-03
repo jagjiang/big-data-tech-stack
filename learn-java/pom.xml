@@ -33,6 +33,14 @@
             <artifactId>jedis</artifactId>
             <version>3.1.0</version>
         </dependency>
+
+        <!-- typesafe 配置库工具类 -->
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
