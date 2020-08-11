@@ -9,7 +9,7 @@ import java.util.List;
  * <p>
  * Description:
  */
-public class ListDemo {
+public class LinkedListDemo {
 
     private static class Node<E> {
         E item;

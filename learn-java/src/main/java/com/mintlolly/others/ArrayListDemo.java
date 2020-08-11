@@ -9,6 +9,13 @@ import java.util.Iterator;
  * Description:
  * fail-fast机制是java集合(Collection)中的一种错误机制。当多个线程对同一个集合的内容进行操作时，就可能会产生fail-fast事件。
  * 异常：ConcurrentModificationException
+ * ArrayList随机查询速度比LinkedList块
+ * 通过get(i)即可获得相应内存中存放的值。
+ * LinkedList是一个双向链表，链表只能顺序访问，LinkedList中的get方法是按照顺序从列表的一端开始检查，直到找到要找的地址。
+ *
+ *
+ * 随机访问 arraylist比较占优势
+ * 对于新增和删除操作add和remove，LinedList比较占优势，因为ArrayList要移动数据
  */
 public class ArrayListDemo {
     public static void main(String[] args)  {
