@@ -1,3 +1,15 @@
+#关于join的一些操作
+select * from company,country where company.id = country.id;
+
+select * from company inner join country on company.country_id = country.id;
+
+select * from company left join country on company.country_id = country.id;
+
+select * from company right join country on company.country_id = country.id;
+
+#mysql 不支持full join
+#select * from company full join country on company.country_id = country.id;
+
 #查询 “01”课程比“02”课程成绩高的学生的信息及课程分数
 select *
 from Student
