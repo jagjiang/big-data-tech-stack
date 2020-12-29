@@ -1,7 +1,5 @@
 package com.mintlolly.thread;
 
-import java.util.concurrent.BlockingQueue;
-
 /**
  * Create by on jiangbo 2020/9/17 15:03
  * <p>

@@ -1,6 +1,5 @@
 package com.mintlolly.thread;
 
-import java.io.Serializable;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 

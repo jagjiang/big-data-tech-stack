@@ -131,7 +131,7 @@ public class Comparator {
     }
     public static void main(String[] args) {
 //        BinaryComparatorDemo();
-//        BinaryPrefixComparatorDemo();
+        BinaryPrefixComparatorDemo();
 //        BitComparatorDemo();
 //        LongComparatorDemo();
 //        NullXomparatorDemo();

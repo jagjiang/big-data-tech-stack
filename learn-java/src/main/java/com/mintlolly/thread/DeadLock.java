@@ -11,6 +11,7 @@ public class DeadLock {
 
     public void thread1() throws InterruptedException {
         synchronized(o1){
+            System.out.println("线程1成功拿到1把锁");
             Thread.sleep(100);
             synchronized (o2){
                 System.out.println("线程1成功拿到两把锁");
@@ -19,6 +20,7 @@ public class DeadLock {
     }
     public void thread2() throws InterruptedException {
         synchronized(o2){
+            System.out.println("线程2成功拿到1把锁");
             Thread.sleep(500);
             synchronized (o1){
                 System.out.println("线程2成功拿到两把锁");
