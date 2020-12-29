@@ -3,7 +3,6 @@ package com.mintlolly.others;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.HashMap;
-import java.util.UUID;
 
 /**
  * Create by on jiangbo 2020/5/20 13:16

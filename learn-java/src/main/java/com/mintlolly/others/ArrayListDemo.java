@@ -33,7 +33,7 @@ public class ArrayListDemo {
             Integer integer = iter.next();
             if(integer==2) {
                 //错误的方法
-//                list.remove(integer);
+                list.remove(integer);
                 //正确的方法使用iterator的remove方法，对数据进行移除
                 iter.remove();
             }
