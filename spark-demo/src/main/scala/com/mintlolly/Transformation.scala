@@ -56,17 +56,22 @@ object Transformation {
      * mapPartitons
      */
     println("=======================mapPartitions=========================")
-    var index = 1
+    //    一般想在spark算子中使用外部变量，并改变外部变量的值，都是使用累加器来实现，
+    //    因为在spark算子中引用的外部变量，其实是变量的副本，
+    //    在算子中对其值进行修改，只是改变副本的值，外部的变量还是没有变。
+    //    使用累加器后运行的task可以使用“+=”操作符来进行累加。
+    //    但是task不能读取到该变量，只有driver program能够读取（通过.value），这也是为了避免使用太多读写锁吧。
     pairRdd.mapPartitions(item =>{
+      var index = 0
       var result = List[(String,Int)]()
-
       while(item.hasNext){
         result = item.next() :: result
       }
       result =("|",index) :: result
-      index = index+ 1
+      index +=1
+      println(index)
       result.iterator
-    }).foreach(println)
+    }).collect().foreach(println)
     println("=======================aggregateByKey说明======================")
     //aggregateBykey 按照key进行聚合
     pairRdd.aggregateByKey(0)((a, b) => {

@@ -25,10 +25,10 @@ object SQLTest {
 
 
     val jdbcDF = spark.read.format("JDBC")
-      .option("url","jdbc:mysql://172.16.150.128:3306/?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true")
-      .option("dbtable","employees.employees")
-      .option("user","root")
-      .option("password","123456")
+      .option("url", "jdbc:mysql://172.16.150.128:3306/?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=true")
+      .option("dbtable", "employees.employees")
+      .option("user", "root")
+      .option("password", "123456")
       .load()
 
     jdbcDF.show(2)
