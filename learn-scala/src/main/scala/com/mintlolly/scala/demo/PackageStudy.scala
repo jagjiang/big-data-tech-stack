@@ -1,6 +1,4 @@
-package com.mintlolly.scala
-
-import com.mintlolly.scala.demo.PackageAuth
+package com.mintlolly.scala.demo
 
 /**
  *
