@@ -11,7 +11,8 @@ package com.mintlolly.scala.demo
  * 作用：如果子类都明确的情况下，为了防止继承滥用，为抽象类添加sealed
  *
  * 在检查模式匹配的时候，用sealed修饰目的是让scala知道这些case的所有情况，
- * scala就能够在编译的时候进行检查，看你写的代码是否有没有漏掉什么没case到，减少编程的错误
+ * scala就能够在编译的时候进行检查，看你写的代码是否有没有漏掉什么没case到，减少编程的错l误
+ * (Warning级别不会报错)
  */
 sealed abstract class Drawing
 

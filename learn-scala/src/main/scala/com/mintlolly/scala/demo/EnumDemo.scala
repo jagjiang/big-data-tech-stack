@@ -12,15 +12,15 @@ object EnumDemo extends Enumeration {
   //这里仅仅是为了将EnumDemo的类型暴露出来给外界使用
   type EnumDemo = Value
 
-  val NET,MEMORY,DISK = Value
-  val OTHER = Value(-1,"other source")
+  val NET, MEMORY, DISK = Value
+  val OTHER = Value(-1, "other source")
 
-  def loadData(enumDemo: EnumDemo):Unit = {
+  def loadData(enumDemo: EnumDemo): Unit = {
     enumDemo match {
-      case NET => println ("source type is " + enumDemo)
-      case MEMORY => println ("source type is " + enumDemo)
-      case DISK => println ("source type is " + enumDemo)
-      case _ => println ("unknown type")
+      case NET => println("source type is " + enumDemo)
+      case MEMORY => println("source type is " + enumDemo)
+      case DISK => println("source type is " + enumDemo)
+      case _ => println("unknown type")
     }
   }
 
@@ -28,8 +28,8 @@ object EnumDemo extends Enumeration {
     val memory = EnumDemo(1)
     loadData(memory)
     println()
-    for(e <- EnumDemo.values){
-      println(e.id+":"+e)
+    for (e <- EnumDemo.values) {
+      println(e.id + ":" + e)
     }
 
   }

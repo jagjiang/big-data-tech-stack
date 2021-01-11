@@ -6,7 +6,7 @@ package com.mintlolly.scala.demo
  * Description:
  *
  */
-class MatchDemo extends App {
+class MatchDemo{
   def matchDemo(x:Char):String = x match {
     case 'a' => "left"
     case 'd' => "right"
@@ -14,9 +14,10 @@ class MatchDemo extends App {
     case 's' => "down"
   }
 }
-object MatchCase{
+
+object MatchDemo{
   def main(args: Array[String]): Unit = {
-    val matchdemo = new MatchDemo
-    println(matchdemo.matchDemo('a'))
+    val demo = new MatchDemo
+    println(demo.matchDemo('a'))
   }
 }
