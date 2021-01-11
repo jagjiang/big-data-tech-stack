@@ -1,5 +1,7 @@
 package com.mintlolly.scala
 
+import com.mintlolly.scala.demo.PackageAuth
+
 /**
  *
  * @description
@@ -13,7 +15,9 @@ class PackageStudy {
   def getb(): Int = b
 
   var m = PackageStudy.c
-//  var n = PackageStudy.d
+
+  //  var n = PackageStudy.d
+
   // 在伴生类中直接访问伴生对象的 private[this] 变量，会报错。
   var o = PackageStudy.get_d()
 }
@@ -27,11 +31,15 @@ object PackageStudy {
   def get_d(): Int = d
 
   def main(args: Array[String]): Unit = {
-    val a_obj = new PackageStudy
-    println(a_obj.a)
-//    println(a_obj.b) //直接访问 类中的 private[this] 的变量，会报错
-    println(a_obj.getb())
-    println(a_obj.m)
-    println(a_obj.o)
+    val study = new PackageStudy
+    println(study.a)
+    //    println(a_obj.b) //直接访问 类中的 private[this] 的变量，会报错
+    println(study.getb())
+    println(study.m)
+    println(study.o)
+    println(d)
+
+    val auth = new PackageAuth()
+    println(auth.name)
   }
 }
