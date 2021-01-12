@@ -15,6 +15,7 @@
         <module>spark-demo</module>
         <module>learn-scala</module>
         <module>springboot-demo</module>
+        <module>spark3-demo</module>
     </modules>
 
     <name>study</name>

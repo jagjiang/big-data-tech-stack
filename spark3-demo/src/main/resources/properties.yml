@@ -1,0 +1,17 @@
+db:
+  postGIS:
+    host: 192.168.200.152
+    port: 5432
+    database: bdt_result
+    user: root
+    passwd : dist@2020
+    url: jdbc:postgresql://192.168.200.152:5432/bdt_result?
+  mysql:
+    host: 192.168.200.152
+    port: 3306
+    database: bdt_result
+    user: root
+    passwd: dist@2020
+    url: jdbc:postgresql://192.168.200.152:5432/bdt_result?
+
+zookeeper: 192.168.200.151
