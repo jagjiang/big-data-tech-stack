@@ -4,7 +4,8 @@ import com.mintlolly.bean.JsonBean.WordCountBean
 import com.mintlolly.common.TService
 import com.mintlolly.dao.WordCountDao
 import com.mintlolly.service.util.AnalysisUtil
-import com.mintlolly.util.JsonUtil
+import com.mintlolly.util.{EnvUtil, JsonUtil}
+import org.apache.spark.sql.SparkSession
 
 
 /**
@@ -15,6 +16,8 @@ import com.mintlolly.util.JsonUtil
  */
 class WordCountService extends TService{
   implicit val formats = org.json4s.DefaultFormats
+  private val spark: SparkSession = EnvUtil.get()
+  import spark.implicits._
 
   private val wordCountDao = new WordCountDao()
   def dataAnalysis(json: String)={
@@ -26,6 +29,9 @@ class WordCountService extends TService{
     val lines = wordCountDao.readFile(inPath)
 
     val words = AnalysisUtil.wordCount(lines)
+
+    val df = words.toDF("word", "num").createOrReplaceTempView("words")
+    spark.sql("select * from words").show
     wordCountDao.saveFile(words,outPath)
   }
 }
