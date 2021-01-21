@@ -38,7 +38,7 @@ class WordCountFunc implements FlatMapFunction<String, Tuple2<String,Integer>>{
 
     @Override
     public void flatMap(String lines, Collector<Tuple2<String, Integer>> out) throws Exception {
-        String[] words = lines.split("[}{%.= :,\"();#/-]");
+        String[] words = lines.split("[\\\\<>}{%.= :,\"();#/-]");
         for (String word : words) {
             out.collect(new Tuple2<>(word.toLowerCase(),1));
         }
