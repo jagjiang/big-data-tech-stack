@@ -11,15 +11,39 @@ public class StopThread implements Runnable {
     public void run() {
         int count = 0;
         while (!Thread.currentThread().isInterrupted() && count < 1000) {
-            System.out.println("count = " + count++);
+            System.out.println("count =  " + count++);
         }
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Thread thread = new Thread(new StopThread());
-        thread.start();
+        Thread stopThread = new Thread(new StopThread());
+        stopThread.start();
         Thread.sleep(5);
-        thread.interrupt();
+        stopThread.interrupt();
+        //this.interrupted(): 测试当前线程是否已经中断； this.isInterrupted(): 测试线程是否已经中断；
+        //this.interrupted()方法的解释：测试当前线程是否已经中断，当前线程是指运行this.interrupted()方法的线程。
+        System.out.println("stop 1->" + stopThread.interrupted());
+        System.out.println("stop 2->" + stopThread.interrupted());
+
+        System.out.println("stop 1.1->" + stopThread.isInterrupted());
+        System.out.println("stop 2.1->" + stopThread.isInterrupted());
+
+        /**
+         * 从控制台打印的结果来看，线程并未停止，这也证明了interrupted()方法的解释，
+         * 测试当前线程是否已经中断。这个当前线程是main，它从未中断过，所以打印的结果是两个false.
+         */
+
+        Thread.currentThread().interrupt();
+        System.out.println("stop 3->" + Thread.interrupted());
+        System.out.println("stop 4->" + Thread.interrupted());
+
+        System.out.println("End");
+
+        /**
+         * 方法interrupted()的确判断出当前线程是否是停止状态。但为什么第2个布尔值是false呢？
+         * 官方帮助文档中对interrupted方法的解释： 测试当前线程是否已经中断。
+         * 线程的中断状态由该方法清除。 换句话说，如果连续两次调用该方法，则第二次调用返回false。
+         */
 
         Runnable runnable = () -> {
             int num = 0;
@@ -41,13 +65,14 @@ public class StopThread implements Runnable {
             }
         };
 
-        thread = new Thread(runnable);
-        System.out.println(thread.getState());
-        thread.start();
-        System.out.println(thread.getState());
-        Thread.sleep(5);
-        System.out.println(thread.getState());
-        thread.interrupt();
-        System.out.println(thread.getState());
+        Thread runnableThread = new Thread(runnable);
+
+//        System.out.println(thread.getState());
+//        thread.start();
+//        System.out.println(thread.getState());
+//        Thread.sleep(5);
+//        System.out.println(thread.getState());
+//        thread.interrupt();
+//        System.out.println(thread.getState());
     }
 }
