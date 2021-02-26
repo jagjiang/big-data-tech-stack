@@ -14,7 +14,7 @@ object WordCount {
 
     val sc = spark.sparkContext
 
-    val list = List(12,33,44,55,66,22)
+    val list = List(12,33,44,55,66,22,66,222)
 
     /**
      * 源码:
@@ -72,7 +72,9 @@ object WordCount {
      *
      */
 
-    sc.textFile("logs/test.log",2)
-      .saveAsTextFile("logs/textfileout")
+//    sc.textFile("logs/test.log",2)
+//      .saveAsTextFile("logs/textfileout")
+//
+    sc.makeRDD(list).map((_,null)).reduceByKey((x,y) => x).map(_._1).foreach(println)
   }
 }
