@@ -38,6 +38,8 @@ object Transformation {
      * ("cat",12),("dog",12),("mouse",2)
     */
 
+
+    // repartition算子
     pairRdd.mapPartitionsWithIndex((index, partitionIterator) => {
       val partitionsMap = scala.collection.mutable.Map[Int, List[(String, Int)]]()
       var partitionList = List[(String, Int)]()
@@ -155,5 +157,10 @@ object Transformation {
     println("============================distinct============================")
     //distinct底层用的reducebykey key为源数据，value为null,最后返回key ._1
     unionRDD.distinct().foreach(println)
+    Thread.sleep(5000)
+    println("============================sortBy============================")
+    //默认升序
+    //ascending = false 降序排序
+    sc.makeRDD(Array(12,22,32,23,11,112,34,55)).sortBy(s => s,false,1).foreach(println)
   }
 }
