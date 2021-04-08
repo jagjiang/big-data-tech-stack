@@ -58,7 +58,7 @@ public class HBaseOperation {
         try{
             if(!admin.tableExists(TableName.valueOf(tableName))) {
                 //表描述器构造器
-                TableDescriptorBuilder  tdb  =TableDescriptorBuilder.newBuilder(TableName.valueOf(tableName))  ;
+                TableDescriptorBuilder tdb=TableDescriptorBuilder.newBuilder(TableName.valueOf(tableName));
                 //列族描述器构造器
                 ColumnFamilyDescriptorBuilder cdb;
                 //获得列描述器
@@ -74,9 +74,9 @@ public class HBaseOperation {
 
                 TableDescriptor td = tdb.build();
                 //对创建的表进行分区  Bytes.toBytes本身返回就是一个数组
-                byte[][] splitKeys = new byte[][]{ Bytes.toBytes("10000"),
+                byte[][] splitKeys = new byte[][]{Bytes.toBytes("10000"),
                         Bytes.toBytes("20000"), Bytes.toBytes("30000"),
-                        Bytes.toBytes("40000") };
+                        Bytes.toBytes("40000")};
                 //创建表
                 admin.createTable(td,splitKeys);
             }else {

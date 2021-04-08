@@ -1,13 +1,20 @@
 package com.mintlolly.thread;
 
+import java.util.Random;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 /**
  * Create by on jiangbo 2020/6/17 14:19
  * <p>
  * Description:实际开发中一般使用Runnable接口的方式比较多，因为：
- * 通过继承Thread类的方式，可以完成多线程的建立。但是这种方式有一个局限性，如果一个类已经有了自己的父类，就不可以继承Thread类
- * 而实现Runnable接口可以避免单继承的局限性。
- * 其他的好像没什么区别，继承thread的类的可以直接创建执行start
- * 实现接口的只能调用方法run
+ * 1.从代码架构考虑 Runnable里只有一个run方法，run方法定义了需要执行的内容，实现Runnable与Thread的解耦，Thread 负责线程启动和属性设置等内容
+ * 简单点说，如下代码，start需要new Thread
+ * 2.使用继承Thread的方式，每次执行一次任务，都要新建一个独立的线程，实现Runnable接口的方式，就可以将线程传给线程池，使用一些固定线程完成任务
+ * 不需要每次创建，销毁，大大降低性能开销
+ * 3.不支持双继承，限制了代码代码可拓展性
  */
 public class RunnableDiffThread {
     public static void main(String[] args) throws InterruptedException {
@@ -42,7 +49,7 @@ public class RunnableDiffThread {
 }
 
 /**
- * 通过实现Runnable接口，实例化Thread类
+ * 通过实现Runnable接口，重写run方法，之后需要把这个run方法的实例传到Thread类中就可以实现多线程
  */
 class MyThreadImplRunnable implements Runnable{
     private int ticket = 10;
@@ -70,7 +77,6 @@ class MyThreadExtendsThread extends Thread{
 
     MyThreadExtendsThread(String name){
         this.name = name;
-        this.name = name;
     }
 
     @Override
@@ -83,3 +89,30 @@ class MyThreadExtendsThread extends Thread{
         }
     }
 }
+
+/**
+ * 除了实现接口和继承类，线程池和Callable也是可以创建线程的，但是它们本质上也是通过前两种方式实现线程的创建
+ *
+ * 有返回值得Callable创建线程
+ *
+ * 无论是 Callable 还是 FutureTask，它们首先和 Runnable 一样，都是一个任务，
+ * 是需要被执行的，而不是说它们本身就是线程。
+ * 它们可以放到线程池中执行，如代码所示， submit() 方法把任务放到线程池中，
+ * 并由线程池创建线程，不管用什么方法，
+ * 最终都是靠线程来执行的，
+ * 而子线程的创建方式仍脱离不了最开始讲的两种基本方式，也就是实现 Runnable 接口和继承 Thread 类。
+ */
+
+class CallableTask implements Callable<Integer>{
+
+    @Override
+    public Integer call() throws Exception {
+        return new Random().nextInt();
+    }
+
+    //创建线程池
+    ExecutorService service = Executors.newFixedThreadPool(10);
+    //提交任务，并用 Future提交返回结果
+    Future<Integer> future = service.submit(new CallableTask());
+}
+

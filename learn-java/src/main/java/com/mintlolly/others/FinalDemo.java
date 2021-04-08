@@ -1,7 +1,5 @@
 package com.mintlolly.others;
 
-import java.util.ArrayList;
-
 /**
  * Create by on jiangbo 2020/5/28 15:55
  * <p>

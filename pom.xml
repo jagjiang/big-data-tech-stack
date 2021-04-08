@@ -15,9 +15,11 @@
         <module>spark-demo</module>
         <module>learn-scala</module>
         <module>springboot-demo</module>
+        <module>spark3-demo</module>
+        <module>flink-demo</module>
     </modules>
 
-    <name>study</name>
+    <name>bdt-data-tech-stack</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
