@@ -1,7 +1,6 @@
 package com.mintlolly.hbase;
 
 
-import com.google.common.collect.Sets;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.CompareOperator;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -12,12 +11,10 @@ import org.apache.hadoop.hbase.filter.BinaryComparator;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.RowFilter;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.apache.hadoop.hbase.util.compaction.MajorCompactor;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Set;
 
 public class HBaseOperation {
 
