@@ -2,9 +2,10 @@ package com.mintlolly;
 
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
+import org.apache.flink.api.common.operators.Order;
 import org.apache.flink.api.java.ExecutionEnvironment;
-import org.apache.flink.api.java.operators.AggregateOperator;
 import org.apache.flink.api.java.operators.DataSource;
+import org.apache.flink.api.java.operators.SortPartitionOperator;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.util.Collector;
 import org.slf4j.Logger;
@@ -24,11 +25,11 @@ public class BatchWordCount {
         //创建执行环境
         ExecutionEnvironment flinkEnv = ExecutionEnvironment.getExecutionEnvironment();
         LOG.info("读取数据");
-        DataSource<String> stringDataSource = flinkEnv.readTextFile("G:\\github_topic\\big-data-tech-stack\\flink-demo\\src\\main\\java\\com\\mintlolly\\BatchWordCount.java");
+        DataSource<String> stringDataSource = flinkEnv.readTextFile(".\\flink-demo\\src\\main\\java\\com\\mintlolly\\BatchWordCount.java");
         LOG.info("开始计算");
-        AggregateOperator<Tuple2<String, Integer>> wordCount = stringDataSource.flatMap(new WordCountFunc())
+        SortPartitionOperator<Tuple2<String, Integer>> wordCount = stringDataSource.flatMap(new WordCountFunc())
                 .groupBy(0)
-                .sum(1);
+                .sum(1).sortPartition(1, Order.DESCENDING);
         LOG.info("打印结果");
         wordCount.print();
     }
