@@ -1,4 +1,4 @@
-package com.mintlolly.basics.patterns.base;
+package com.mintlolly.basics.patterns.builder;
 
 import com.mintlolly.basics.patterns.builder.MilkTea;
 
