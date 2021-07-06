@@ -37,7 +37,7 @@ object UDAFDemo {
     ds.select(col).show()
 
     //spark 3.0支持的
-//    spark.udf.register("avgAge", functions.udaf(udafStrong))
+    //spark.udf.register("avgAge", functions.udaf(udafStrong))
   }
 }
 
