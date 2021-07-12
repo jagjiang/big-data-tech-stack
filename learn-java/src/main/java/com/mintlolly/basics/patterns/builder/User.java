@@ -27,12 +27,16 @@ public class User {
         System.out.println("一份"+milkTea.getSize()+"、"+pearl+"、"+ice +"的"+milkTea.getType()+"奶茶");
     }
     private static void buyMilkTea(){
-        MilkTea milkTea = new MilkTea.Builder("草莓味")
+        MilkTea strawberry = new MilkTea.Builder("草莓味")
                 .ice(true)
                 .pearl(true)
                 .size("超大杯")
                 .build();
-        show(milkTea);
+        show(strawberry);
+
+        MilkTea apple = new MilkTea.Builder("苹果味").pearl(true).build();
+        show(apple);
+
     }
     public static void main(String[] args) {
         buyMilkTea();
