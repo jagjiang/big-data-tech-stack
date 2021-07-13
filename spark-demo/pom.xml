@@ -78,28 +78,28 @@
     </dependency>
 
     <!-- geomesa https://blog.csdn.net/zhanggqianglovec/article/details/103761710 -->
-    <dependency>
-      <groupId>org.locationtech.geomesa</groupId>
-      <artifactId>geomesa-spark-jts_2.11</artifactId>
-      <version>2.3.2</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.locationtech.geomesa</groupId>-->
+<!--      <artifactId>geomesa-spark-jts_2.11</artifactId>-->
+<!--      <version>2.3.2</version>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.locationtech.geomesa</groupId>
-      <artifactId>geomesa-spark-core_2.11</artifactId>
-      <version>2.3.2</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.locationtech.geomesa</groupId>-->
+<!--      <artifactId>geomesa-spark-core_2.11</artifactId>-->
+<!--      <version>2.3.2</version>-->
+<!--    </dependency>-->
 
-    <dependency>
-      <groupId>org.locationtech.geomesa</groupId>
-      <artifactId>geomesa-spark-sql_2.11</artifactId>
-      <version>2.3.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.locationtech.geomesa</groupId>
-      <artifactId>geomesa-spark-converter_2.11</artifactId>
-      <version>2.3.2</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.locationtech.geomesa</groupId>-->
+<!--      <artifactId>geomesa-spark-sql_2.11</artifactId>-->
+<!--      <version>2.3.2</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.locationtech.geomesa</groupId>-->
+<!--      <artifactId>geomesa-spark-converter_2.11</artifactId>-->
+<!--      <version>2.3.2</version>-->
+<!--    </dependency>-->
     <!-- 分词器 -->
     <dependency>
       <groupId>com.huaban</groupId>
