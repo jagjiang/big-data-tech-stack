@@ -1,4 +1,4 @@
-package com.mintlolly;
+package com.mintlolly.demo;
 
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
