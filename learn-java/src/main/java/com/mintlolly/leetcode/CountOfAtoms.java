@@ -42,7 +42,7 @@ public class CountOfAtoms {
      *
      * 栈解法：
      */
-    public HashMap countOfAtoms(String formula){
+    public HashMap<String,Integer> countOfAtoms(String formula){
         this.i = 0;
         this.n = formula.length();
         this.formula = formula;
@@ -75,7 +75,7 @@ public class CountOfAtoms {
 
     public static void main(String[] args) {
         CountOfAtoms countOfAtoms = new CountOfAtoms();
-        HashMap atom = countOfAtoms.countOfAtoms("Mg2H2O");
+        HashMap<String,Integer> atom = countOfAtoms.countOfAtoms("Mg2H2O");
         atom.forEach((k,v) ->{
             System.out.println(k+":"+v);
         });
