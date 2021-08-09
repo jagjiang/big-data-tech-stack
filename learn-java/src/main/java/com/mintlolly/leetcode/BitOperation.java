@@ -22,7 +22,7 @@ package com.mintlolly.leetcode;
  */
 public class BitOperation {
     public static void main(String[] args) {
-        Integer i = 5;
+        int i = 6;
         int bitCount = Integer.bitCount(i);
         System.out.println(bitCount);
     }
