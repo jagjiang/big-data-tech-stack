@@ -16,8 +16,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <encoding>UTF-8</encoding>
-    <scala.version>2.11.8</scala.version>
-    <scala.compat.version>2.11</scala.compat.version>
+    <scala.version>2.12.10</scala.version>
+    <scala.compat.version>2.12</scala.compat.version>
   </properties>
 
   <repositories>
@@ -52,53 +52,53 @@
     <!-- spark -->
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_2.11</artifactId>
-      <version>2.3.2</version>
+      <artifactId>spark-core_2.12</artifactId>
+      <version>2.4.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_2.11</artifactId>
-      <version>2.3.2</version>
+      <artifactId>spark-sql_2.12</artifactId>
+      <version>2.4.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-yarn_2.11</artifactId>
-      <version>2.3.2</version>
+      <artifactId>spark-yarn_2.12</artifactId>
+      <version>2.4.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-hive_2.11</artifactId>
-      <version>2.3.2</version>
+      <artifactId>spark-hive_2.12</artifactId>
+      <version>2.4.0</version>
     </dependency>
     <!-- spark streaming -->
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-streaming_2.11</artifactId>
-      <version>2.3.2</version>
+      <artifactId>spark-streaming_2.12</artifactId>
+      <version>2.4.0</version>
     </dependency>
 
     <!-- geomesa https://blog.csdn.net/zhanggqianglovec/article/details/103761710 -->
 <!--    <dependency>-->
 <!--      <groupId>org.locationtech.geomesa</groupId>-->
-<!--      <artifactId>geomesa-spark-jts_2.11</artifactId>-->
-<!--      <version>2.3.2</version>-->
+<!--      <artifactId>geomesa-spark-jts_2.12</artifactId>-->
+<!--      <version>2.4.0</version>-->
 <!--    </dependency>-->
 
 <!--    <dependency>-->
 <!--      <groupId>org.locationtech.geomesa</groupId>-->
-<!--      <artifactId>geomesa-spark-core_2.11</artifactId>-->
-<!--      <version>2.3.2</version>-->
+<!--      <artifactId>geomesa-spark-core_2.12</artifactId>-->
+<!--      <version>2.4.0</version>-->
 <!--    </dependency>-->
 
 <!--    <dependency>-->
 <!--      <groupId>org.locationtech.geomesa</groupId>-->
-<!--      <artifactId>geomesa-spark-sql_2.11</artifactId>-->
-<!--      <version>2.3.2</version>-->
+<!--      <artifactId>geomesa-spark-sql_2.12</artifactId>-->
+<!--      <version>2.4.0</version>-->
 <!--    </dependency>-->
 <!--    <dependency>-->
 <!--      <groupId>org.locationtech.geomesa</groupId>-->
-<!--      <artifactId>geomesa-spark-converter_2.11</artifactId>-->
-<!--      <version>2.3.2</version>-->
+<!--      <artifactId>geomesa-spark-converter_2.12</artifactId>-->
+<!--      <version>2.4.0</version>-->
 <!--    </dependency>-->
     <!-- 分词器 -->
     <dependency>
