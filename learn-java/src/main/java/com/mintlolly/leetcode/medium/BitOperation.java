@@ -1,4 +1,4 @@
-package com.mintlolly.leetcode;
+package com.mintlolly.leetcode.medium;
 
 /**
  * Create by on jiangbo 2021/3/3 10:01
@@ -22,7 +22,7 @@ package com.mintlolly.leetcode;
  */
 public class BitOperation {
     public static void main(String[] args) {
-        Integer i = 5;
+        int i = 6;
         int bitCount = Integer.bitCount(i);
         System.out.println(bitCount);
     }

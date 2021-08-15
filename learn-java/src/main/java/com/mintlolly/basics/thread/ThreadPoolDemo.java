@@ -9,14 +9,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Description:ThreadPoolExecutor
  */
 public class ThreadPoolDemo {
-    private static int produceTaskSleepTime = 5;
-    private static int consumeTaskSleepTime = 5000;
-    private static int produceTaskMaxNumber = 17; //定义最大添加10个线程到线程池中
+    private final static int produceTaskSleepTime = 5;
+    private final static int consumeTaskSleepTime = 5000;
+    private final static int produceTaskMaxNumber = 20; //定义最大添加10个线程到线程池中
 
     public static void main(String[] args) {
 
-        /**
-         *
+        /*
          * java开发手册规定不允许使用Executors去创建线程池
          *
          * FixedThreadPool和SingleThreadPool:允许的请求队列长度为Integer.MAX_VALUE
@@ -47,7 +46,7 @@ public class ThreadPoolDemo {
 
         //workQueue 表示线程池的任务队列，当线程池所有线程都在处理任务时
         //如果来了新任务就会缓存到此任务队列中排队等待执行。
-        BlockingQueue workQueue = new LinkedBlockingQueue<Runnable>(4);
+        BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(4);
 
         //threadFactory表示线程的创建工厂，此参数一般用的较少，一般不指定，会使用默认的线程工厂的方法来创建线程
         //Executors.defaultThreadFactory() 为默认的线程创建工厂
@@ -96,9 +95,7 @@ public class ThreadPoolDemo {
         });
         try {
             System.out.println(future.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
         threadPool.shutdown();
@@ -107,13 +104,13 @@ public class ThreadPoolDemo {
 
     //我们也可以自定义一个线程工厂，通过实现 ThreadFactory 接口来完成，
     // 这样就可以自定义线程的名称或线程执行的优先级了。
-    static class DeaultThreadFactory implements ThreadFactory{
+    static class DefaultThreadFactory implements ThreadFactory{
         private static final AtomicInteger poolNumber = new AtomicInteger(1);
         private final ThreadGroup group;
         private final AtomicInteger threadNumber = new AtomicInteger(1);
         private final String namePrefix;
 
-        DeaultThreadFactory() {
+        DefaultThreadFactory() {
             SecurityManager s = System.getSecurityManager();
             group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
             namePrefix = "pool-" + poolNumber.getAndIncrement() + "-thread-";
@@ -121,8 +118,8 @@ public class ThreadPoolDemo {
 
         //创建线程
         @Override
-        public Thread newThread(Runnable r) {
-            Thread t = new Thread(group,r,namePrefix+threadNumber.getAndIncrement(),0);
+        public Thread newThread(Runnable target) {
+            Thread t = new Thread(group,target,namePrefix+threadNumber.getAndIncrement(),0);
 
             if(t.isDaemon()){
                 t.setDaemon(false);
@@ -150,16 +147,18 @@ public class ThreadPoolDemo {
         protected void beforeExecute(Thread t, Runnable r) {
             Long sTime = System.nanoTime();
             localTime.set(sTime);
-            System.out.println(String.format("%s | before | time=%s",t.getName(), sTime));
+            System.out.printf("%s | before | time=%s%n",t.getName(), sTime);
             super.beforeExecute(t,r);
+            localTime.remove();
         }
 
         @Override
         protected void afterExecute(Runnable r, Throwable t) {
             Long eTime = System.nanoTime();
-            Long totalTime = eTime - localTime.get();
-            System.out.println(String.format("%s | after | time=%s | 耗时：%s 毫秒",Thread.currentThread().getName(),eTime,(totalTime/1000000.0)));
+            long totalTime = eTime - localTime.get();
+            System.out.printf("%s | after | time=%s | 耗时：%s 毫秒%n",Thread.currentThread().getName(),eTime,(totalTime/1000000.0));
             super.afterExecute(r,t);
+            localTime.remove();
         }
     }
 }

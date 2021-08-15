@@ -1,4 +1,4 @@
-package com.mintlolly.leetcode;
+package com.mintlolly.leetcode.medium;
 
 /**
  * @author jiangbo
