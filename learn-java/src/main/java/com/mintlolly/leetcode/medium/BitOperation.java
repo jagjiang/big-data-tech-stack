@@ -1,4 +1,4 @@
-package com.mintlolly.leetcode;
+package com.mintlolly.leetcode.medium;
 
 /**
  * Create by on jiangbo 2021/3/3 10:01
