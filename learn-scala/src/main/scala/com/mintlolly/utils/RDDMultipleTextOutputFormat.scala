@@ -16,7 +16,9 @@ class RDDMultipleTextOutputFormat extends MultipleTextOutputFormat[Any, Any] {
     NullWritable.get()
 
   override def generateFileNameForKeyValue(key: Any, value: Any, name: String): String =
-    key.toString+"/"+name
+    //分目录保存
+//    key.toString+"/"+name
+    key.asInstanceOf[String] + ".csv"
 }
 
 
@@ -26,11 +28,11 @@ object RDDMultipleTextOutputFormat{
       .appName("Write2Mysql")
       .master("local[6]")
       .getOrCreate()
-    spark.sparkContext.textFile("E:\\whkj.csv").map(f =>{
+    spark.sparkContext.textFile("D:\\data\\student.csv").map(f =>{
 
-      (f.split(",")(2),f)
+      (f.split(",")(1),f)
     }).repartition(1)
-      .saveAsHadoopFile("E:\\分目录保存", classOf[String], classOf[String],
+      .saveAsHadoopFile("D:\\data\\分目录保存", classOf[String], classOf[String],
       classOf[RDDMultipleTextOutputFormat])
   }
 }
