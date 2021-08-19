@@ -19,7 +19,7 @@ public class ConsumerOperation {
 
     public static KafkaConsumer<String, String> createConsumer(){
         Properties props = new Properties();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "master:6667,slave2:6667,slave3:6667");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-test");
 //        instanceId.ifPresent(id -> props.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, id));
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
@@ -97,7 +97,7 @@ public class ConsumerOperation {
     }
 
     public static void main(String[] args) {
-//        consumerSingleThread();
-        singleConsummerPattern();
+        consumerSingleThread();
+//        singleConsummerPattern();
     }
 }

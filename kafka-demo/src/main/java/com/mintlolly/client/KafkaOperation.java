@@ -18,7 +18,7 @@ public class KafkaOperation {
     static {
         Properties properties = new Properties();
         //通过server.properties 查看端口，hdp3.1并没有采用默认的9092   listeners=PLAINTEXT://slave2:6667
-        properties.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "master:6667,slave2:6667,slave3:6667");
+        properties.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         adminClient = AdminClient.create(properties);
     }
 
@@ -27,8 +27,8 @@ public class KafkaOperation {
      */
     public static void createTopic(List<String> topics){
 
-        final int numPartitions = 2;
-        final short relicationFactor =2;
+        final int numPartitions = 1;
+        final short relicationFactor =1;
 
         ArrayList<NewTopic> list = new ArrayList<>();
         topics.forEach(topic -> list.add(
@@ -105,7 +105,7 @@ public class KafkaOperation {
         topics.add(OUTPUT_TOPIC);
 
         //创建topics
-//        createTopic(topics);
+        createTopic(topics);
         //列出所有topics
 //        topicLists();
         //删除topics
@@ -114,7 +114,7 @@ public class KafkaOperation {
         //获取topic的配置信息
 //        describeConfig(INPUT_TOPIC);
         //调整topic的partition 目前只允许增加
-        incrPartitions(INPUT_TOPIC,2);
+//        incrPartitions(INPUT_TOPIC,2);
 
         adminClient.close();
     }

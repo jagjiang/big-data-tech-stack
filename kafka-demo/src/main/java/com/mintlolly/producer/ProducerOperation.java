@@ -18,7 +18,7 @@ public class ProducerOperation {
     public static Producer<String,String> createProducer(){
         Properties properties = new Properties();
         //指定kafka的服务的ip地址以及端口号
-        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"master:6667,slave2:6667");
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,"localhost:9092");
         //指定消息key的序列化器
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
         //指定消息value的序列化器
@@ -76,7 +76,7 @@ public class ProducerOperation {
 
 
     public static void main(String[] args) {
-//        producerAsyncSend();
-        producerAsyncCallbackSend();
+        producerAsyncSend();
+//        producerAsyncCallbackSend();
     }
 }
