@@ -1,19 +1,23 @@
-package com.mintlolly.demo.bean;
+package com.mintlolly.bean;
 
 /**
- * Created on 2021/7/14
+ * Created on 2021/8/18
  *
  * @author jiangbo
  * Description:
  */
 public class SensorReading {
     private String id;
-    private Long time;
-    private double temperature;
+    private Long timestamp;
+    private Double temperature;
 
-    public SensorReading(String id, Long time, double temperature) {
+    public SensorReading(){
+
+    }
+
+    public SensorReading(String id, Long timestamp, Double temperature){
         this.id = id;
-        this.time = time;
+        this.timestamp = timestamp;
         this.temperature = temperature;
     }
 
@@ -25,19 +29,19 @@ public class SensorReading {
         this.id = id;
     }
 
-    public Long getTime() {
-        return time;
+    public Long getTimestamp() {
+        return timestamp;
     }
 
-    public void setTime(Long time) {
-        this.time = time;
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public double getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(Double temperature) {
         this.temperature = temperature;
     }
 
@@ -45,7 +49,7 @@ public class SensorReading {
     public String toString() {
         return "SensorReading{" +
                 "id='" + id + '\'' +
-                ", time=" + time +
+                ", timestamp=" + timestamp +
                 ", temperature=" + temperature +
                 '}';
     }
