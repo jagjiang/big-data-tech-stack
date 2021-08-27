@@ -19,6 +19,7 @@ object DfDsRdd {
     import spark.implicits._
     val sc = spark.sparkContext
     val rdd = sc.makeRDD(List(("kitty", 22), ("dog", 24), ("Mickey", 88)))
+    val rdd2 = sc.makeRDD(List(("kitty", 22), ("dog", 24), ("Mickey", 88)))
 
     //构建DF方式二
     val rowRDD = rdd.map(f => {
@@ -29,8 +30,17 @@ object DfDsRdd {
       StructField("name", StringType),
       StructField("age", IntegerType)
     )))
+    val df2 = spark.createDataFrame(rowRDD, StructType(Array(
+      StructField("name", StringType),
+      StructField("age", IntegerType)
+    )))
     df.show()
 
+    df.createOrReplaceTempView("df1")
+    df2.createOrReplaceTempView("df2")
+    //write列名重复会报错，无法写入
+    val frame = spark.sql("select df1.*,df2.* from df1 left join df2 on df1.name = df2.name").toDF();
+    frame.show()
     //rdd -> dataframe -> dataset
     val dataframe = rdd.toDF("name", "age")
     dataframe.show()
