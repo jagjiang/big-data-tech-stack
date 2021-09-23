@@ -6,6 +6,7 @@ package com.mintlolly.algorithm;
  * Description:
  * 选择排序
  * 插入排序
+ * 归并排序
  *
  */
 public class SortDemo {
@@ -32,10 +33,43 @@ public class SortDemo {
         return true;
     }
 
+    public static void merge(Double[] arr,int left,int mid,int right,Double[] temp){
+        //左序列指针
+        int i = left;
+        //右序列指针
+        int j = mid + 1;
+        //临时数组指针
+        int t = 0;
+        //当 左序指针 <= mid 并且右续指针 < right 则需要归并
+        while ( i <= mid && j <= right){
+            if(arr[i] <= arr[j]){
+                temp[t++] = arr[i++];
+            }else {
+                temp[t++] = arr[j++];
+            }
+        }
+        //不满足上面条件 则会走下面其中一条路径
+        //左序遍历追加
+        while (i <= mid){
+            temp[t++] = arr[i++];
+        }
+        //右序遍历追加
+        while (j <= right){
+            temp[t++] = arr[j++];
+        }
+        t = 0;
+        //将temp中的元素拷贝到原数组中
+        while (left <= right){
+            arr[left++] = temp[t++];
+        }
+    }
+
     public static void main(String[] args) {
-        Double[] a = {1.0,2.0,4.0,2.2,2.1};
+        Double[] a = {1.0,6.0,4.0,2.2,2.1};
+        Double[] temp = new Double[a.length];
 //        selectSort(a);
-        insertSort(a);
+//        insertSort(a);
+        mergeSort(a,0,a.length-1,temp);
         assert isSorted(a);
         show(a);
 
@@ -84,5 +118,25 @@ public class SortDemo {
                 exch(a,j,j-1);
             }
         }
+    }
+
+    /**
+     * 归并排序
+     *
+     */
+    public static void mergeSort(Double[] arr,int left,int right,Double[] temp){
+        //如果left < right 则递归继续进行
+        if(left < right){
+            int mid = (left+right)/2;
+            mergeSort(arr,left,mid,temp);
+            mergeSort(arr,mid+1,right,temp);
+            merge(arr,left,mid,right,temp);
+        }
+        //左边归并排序，使得左子序列有序
+
+        //右边归并排序，使得右子序列有序
+
+        //将两个有序子数组合并操作
+
     }
 }
