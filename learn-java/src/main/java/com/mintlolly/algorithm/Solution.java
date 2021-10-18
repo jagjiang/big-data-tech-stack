@@ -1,7 +1,5 @@
 package com.mintlolly.algorithm;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
