@@ -13,6 +13,9 @@ public class HashMapDemo {
 
     public static void main(String[] args) {
         HashMap<String, String> hashMap = new HashMap<>(5);
+        Hashtable<String,String> hashtable = new Hashtable<String,String>();
+        HashSet<String> hashSet = new HashSet<String>();
+        hashSet.add("aaa");
 
         //获取n个相同的hashcode对应的string
         getSameHashCode(20);
