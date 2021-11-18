@@ -1,4 +1,4 @@
-package com.mintlolly.algorithm;
+package com.mintlolly.algorithm.sort;
 
 import java.util.Random;
 
