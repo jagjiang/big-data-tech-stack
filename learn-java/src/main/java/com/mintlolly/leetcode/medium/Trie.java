@@ -70,6 +70,7 @@ public class Trie {
         Trie trie = new Trie();
         trie.insert("apple");
         trie.insert("app");
+        trie.insert("apple");
         System.out.println(trie.search("app"));
         System.out.println(trie.search("apple"));
         System.out.println(trie.search("appl"));
