@@ -1,4 +1,4 @@
-package com.mintlolly.algorithm;
+package com.mintlolly.algorithm.sort;
 
 /**
  * Create by on jiangbo 2020/6/4 16:42
@@ -7,7 +7,7 @@ package com.mintlolly.algorithm;
  * 选择排序
  * 插入排序
  * 归并排序
- *
+ * 快排
  */
 public class SortDemo {
     private static boolean less(Comparable v, Comparable w){
@@ -18,13 +18,13 @@ public class SortDemo {
         a[i] = a[j];
         a[j] = t;
     }
-    private static void show(Comparable[] a){
+    private static void show(int[] a){
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i] + " ");
         }
     }
 
-    public static boolean isSorted(Comparable[] a){
+    public static boolean isSorted(int[] a){
         for (int i = 0; i < a.length; i++) {
             if(less(a[i],a[i-1])){
                 return false;
@@ -33,7 +33,7 @@ public class SortDemo {
         return true;
     }
 
-    public static void merge(Double[] arr,int left,int mid,int right,Double[] temp){
+    public static void merge(int[] arr,int left,int mid,int right,int[] temp){
         //左序列指针
         int i = left;
         //右序列指针
@@ -64,12 +64,14 @@ public class SortDemo {
         }
     }
 
+    static int n = 1;
     public static void main(String[] args) {
-        Double[] a = {1.0,6.0,4.0,2.2,2.1};
-        Double[] temp = new Double[a.length];
+        int[] a = {9,1,6,4,2,20,10};
+        int[] temp = new int[a.length];
 //        selectSort(a);
 //        insertSort(a);
-        mergeSort(a,0,a.length-1,temp);
+//        mergeSort(a,0,a.length-1,temp);
+        quickSort(a,0,a.length - 1);
         assert isSorted(a);
         show(a);
 
@@ -124,19 +126,53 @@ public class SortDemo {
      * 归并排序
      *
      */
-    public static void mergeSort(Double[] arr,int left,int right,Double[] temp){
+    public static void mergeSort(int[] arr,int left,int right,int[] temp){
         //如果left < right 则递归继续进行
         if(left < right){
             int mid = (left+right)/2;
+            //左边归并排序，使得左子序列有序
             mergeSort(arr,left,mid,temp);
+            //右边归并排序，使得右子序列有序
             mergeSort(arr,mid+1,right,temp);
+            //将两个有序子数组合并操作
             merge(arr,left,mid,right,temp);
         }
-        //左边归并排序，使得左子序列有序
+    }
 
-        //右边归并排序，使得右子序列有序
+    private static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int partitionIndex = partition(arr, left, right);
+            n++;
+            quickSort(arr, left, partitionIndex - 1);
+            n = n+100;
+            quickSort(arr, partitionIndex + 1, right);
+        }
+    }
 
-        //将两个有序子数组合并操作
+    private static int partition(int[] arr, int left, int right) {
+        // 设定基准值（pivot）
+        int pivot = left;
+        int index = pivot + 1;
+        for (int i = index; i <= right; i++) {
+            if (arr[i] < arr[pivot]) {
+                swap(arr, i, index);
+                index++;
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(n+":"+i + ":" + arr[i]);
+        }
+        //最后把基准数据放回数组中
+        swap(arr, pivot, index - 1);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(n+":"+i + ":" + arr[i]);
+        }
+        return index - 1;
+    }
 
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
