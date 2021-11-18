@@ -14,7 +14,7 @@ object ReadParquet {
     val conf = new SparkConf().setMaster("local[2]").setAppName("ReadParquet")
     val spark = SparkSession.builder().config(conf).getOrCreate()
 
-    spark.read.parquet("\\test-data\\rawlog.20210223_235959.parquet").show();
+    spark.read.parquet("\\test-data\\rawlog.20210223_235959.parquet").repartition(2).show();
 //    spark.read.parquet("E:\\test-data\\dyx-offline\\20210223\\user-byte.parquet.20210223_235959").show()
   }
 }
