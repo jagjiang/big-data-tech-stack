@@ -15,6 +15,8 @@ public class ThreadPoolDemo {
 
     public static void main(String[] args) {
 
+        //不建议使用
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
         /*
          * java开发手册规定不允许使用Executors去创建线程池
          *
@@ -24,8 +26,6 @@ public class ThreadPoolDemo {
          * 可能会创建大量的线程，从而导致 OOM
          */
 
-        //不建议使用
-        Executors.newFixedThreadPool(4);
 
         //建议使用ThreadPoolExecutor构造一个线程池
 

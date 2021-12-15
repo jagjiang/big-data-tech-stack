@@ -80,6 +80,7 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src/main/scala</sourceDirectory>
         <plugins>
 
             <!-- Java Compiler -->
