@@ -125,7 +125,7 @@ object Transformation {
     val ints = List("123", "123", "123", "123")
     ints.foreach(println)
     //为什么ints.flatMap(_)不可以 https://blog.csdn.net/iteye_6988/article/details/82644211
-    ints.flatMap(f=>f).foreach(println)
+    ints.flatten.foreach(println)
 
     println("============================glom====================================")
     //将同一个分区的数据直接转换为相同类型的内存数组进行处理，分区不变

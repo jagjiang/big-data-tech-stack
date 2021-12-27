@@ -19,5 +19,7 @@ object MatchDemo{
   def main(args: Array[String]): Unit = {
     val demo = new MatchDemo
     println(demo.matchDemo('a'))
+    val array = Array(Array("hello","woad"),Array("world","qaq"),Array("word","name"))
+    array.flatten.foreach(println)
   }
 }

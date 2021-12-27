@@ -9,18 +9,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 public class ConsumerOperation {
+    static String topic_name = "min_insync_relicas_test";
 
     final static Logger LOG = LoggerFactory.getLogger(ConsumerOperation.class);
 
     public static KafkaConsumer<String, String> createConsumer() {
         Properties props = new Properties();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "master:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-test");
 //        instanceId.ifPresent(id -> props.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, id));
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
@@ -28,8 +26,7 @@ public class ConsumerOperation {
         props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "30000");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
-        return consumer;
+        return new KafkaConsumer<String, String>(props);
     }
 
     /**
@@ -37,7 +34,7 @@ public class ConsumerOperation {
      */
     public static void consumerSingleThread() {
         KafkaConsumer<String, String> consumer = createConsumer();
-        consumer.subscribe(Arrays.asList("input-topic"));
+        consumer.subscribe(Arrays.asList(topic_name));
         final int minBatchSize = 10;
         List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         while (true) {
@@ -51,7 +48,7 @@ public class ConsumerOperation {
             if (buffer.size() >= minBatchSize) {
                 //如写入数据库的逻辑，下面只是打印
                 for (ConsumerRecord<String, String> stringStringConsumerRecord : buffer) {
-                    System.out.println(stringStringConsumerRecord);
+//                    System.out.println(stringStringConsumerRecord);
                 }
                 //
                 consumer.commitAsync();
@@ -70,8 +67,8 @@ public class ConsumerOperation {
         KafkaConsumer<String, String> consumer = createConsumer();
         KafkaConsumer<String, String> consumer1 = createConsumer();
 
-        consumer.subscribe(Arrays.asList("input-topic"));
-        consumer1.subscribe(Arrays.asList("input-topic"));
+        consumer.subscribe(Collections.singletonList(topic_name));
+        consumer1.subscribe(Collections.singletonList(topic_name));
 //        List<TopicPartition> list = new ArrayList<>();
 //        TopicPartition topicPartition = new TopicPartition("input-topic", 0);
 //        TopicPartition topicPartition1 = new TopicPartition("input-topic", 1);
@@ -99,7 +96,7 @@ public class ConsumerOperation {
 
     public static void fromBeginning() {
         KafkaConsumer<String, String> consumer = createConsumer();
-        TopicPartition topicPartition = new TopicPartition("input-topic", 0);
+        TopicPartition topicPartition = new TopicPartition(topic_name, 0);
         consumer.assign(Arrays.asList(topicPartition));
         consumer.seekToBeginning(Arrays.asList(topicPartition));
 
@@ -112,8 +109,8 @@ public class ConsumerOperation {
     }
 
     public static void main(String[] args) {
-//        consumerSingleThread();
+        consumerSingleThread();
 //        singleConsummerPattern();
-        fromBeginning();
+//        fromBeginning();
     }
 }
