@@ -75,6 +75,9 @@ object WordCount {
 //    sc.textFile("logs/test.log",2)
 //      .saveAsTextFile("logs/textfileout")
 //
-    sc.makeRDD(list).map((_,null)).reduceByKey((x,y) => x,20).map(_._1).foreach(println)
+    sc.makeRDD(list).map((_,null))
+      .reduceByKey((x,y) => x,20)
+      .map(_._1)
+      .foreach(println)
   }
 }

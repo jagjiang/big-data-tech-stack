@@ -23,6 +23,7 @@ public class HdfsOpration {
     public static void main(String[] args) throws IOException {
         Configuration conf = new Configuration();
         FileSystem fileSystem = FileSystem.get(conf);
+        fileSystem.copyFromLocalFile(new Path("E:\\test-data\\output1214"),new Path("E:\\test-data\\output1214"));
 
         boolean exists = fileSystem.exists(new Path("E:\\test-data\\student"));
         FSDataOutputStream fsDataOutputStream = fileSystem.create(new Path("E:\\test-data\\output1214"));

@@ -12,13 +12,16 @@ object SparkSQL {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder().master("local[8]").appName("SparkSQL").getOrCreate()
 
-    val frame = spark.read.format("csv").option("header", "true").csv("E:\\test-data\\student.csv")
-    val value = frame.repartition(4)
+    val csvTest = spark.read.format("csv").option("header", "true").csv("E:\\test-data\\student.csv")
+    val value = csvTest.repartition(4)
     value.rdd.mapPartitions(f =>{
       f.filter(_.toString().contains("22"))
-    }).foreach(println)
-
-    value.write.option("header", "true").csv("E:\\test-data\\student")
+    })
+  csvTest.printSchema()
+    val jsonTest = spark.read.json("E:\\test-data\\test.json")
+    jsonTest.show()
+    jsonTest.printSchema()
+//    value.write.option("header", "true").csv("E:\\test-data\\student")
 
   }
 }
