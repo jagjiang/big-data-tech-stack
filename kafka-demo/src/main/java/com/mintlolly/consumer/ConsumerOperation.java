@@ -12,13 +12,13 @@ import java.time.Duration;
 import java.util.*;
 
 public class ConsumerOperation {
-    static String topic_name = "min_insync_relicas_test";
+    static String topic_name = "window";
 
     final static Logger LOG = LoggerFactory.getLogger(ConsumerOperation.class);
 
     public static KafkaConsumer<String, String> createConsumer() {
         Properties props = new Properties();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "master:9092");
+        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "101.42.251.112:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer-test");
 //        instanceId.ifPresent(id -> props.put(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, id));
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
@@ -34,7 +34,7 @@ public class ConsumerOperation {
      */
     public static void consumerSingleThread() {
         KafkaConsumer<String, String> consumer = createConsumer();
-        consumer.subscribe(Arrays.asList(topic_name));
+        consumer.subscribe(Collections.singletonList(topic_name));
         final int minBatchSize = 10;
         List<ConsumerRecord<String, String>> buffer = new ArrayList<>();
         while (true) {
